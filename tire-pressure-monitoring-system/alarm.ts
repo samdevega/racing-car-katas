@@ -1,15 +1,13 @@
 import Sensor from './sensor'
 
 export default class Alarm {
-	private highPressureThreshold: number
-	private lowPressureThreshold: number
-	private sensor: Sensor
 	private alarmOn: boolean
 
-	constructor() {
-		this.lowPressureThreshold = 17
-		this.highPressureThreshold = 21
-		this.sensor = new Sensor()
+	constructor(
+		private sensor: Sensor,
+		private lowPressureThreshold: number = 17,
+		private highPressureThreshold: number = 21
+	) {
 		this.alarmOn = false
 	}
 
