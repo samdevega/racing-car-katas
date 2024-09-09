@@ -40,5 +40,15 @@ describe('Tyre Pressure Monitoring System', () => {
 
 			expect(alarm.isAlarmOn()).eql(false)
 		})
+
+		it('is on after checking pressure when pressure is below low pressure threshold', () => {
+			const sensorStub = new Sensor()
+			sensorStub.popNextPressurePsiValue = () => 16
+			const alarm = new Alarm(sensorStub, 17, 21)
+
+			alarm.check()
+
+			expect(alarm.isAlarmOn()).eql(true)
+		})
 	})
 })
